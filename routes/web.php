@@ -15,8 +15,11 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-
-// dashboard
+// dashboard masyarakat
+Route::get('/dashboard_masyarakat',function(){
+    return view('pagesmasyarakat.dashboard_masyarakat');
+});
+// dashboard admin
 Route::get('/dashboard',function(){
     return view('pagesadmin.dashboard_admin');
 });
@@ -57,6 +60,8 @@ Route::get('/edit_masyarakat',function(){
 });
 
 
+
+
 // kategori
 Route::get('/kategori',function(){
     return view('pagesadmin.kategori.data_kategori');
@@ -66,4 +71,10 @@ Route::get('/tambah_kategori',function(){
 });
 Route::get('/edit_kategori',function(){
     return view('pagesadmin.kategori.edit_kategori');
+});
+
+
+// profile
+Route::get('/profile',function(){
+    return view('pagesadmin.profile.data_profile');
 });

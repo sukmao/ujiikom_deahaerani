@@ -20,64 +20,71 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-header">MASTER DATA</li>
-                        <li class="nav-item">
-                            <a href="/dashboard" class="nav-link {{ request()->is('/') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/masyarakat" class="nav-link {{ request()->is('masyarakat') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>Masyarakat</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/pegawai" class="nav-link {{ request()->is('pegawai') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>Pegawai</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/kategori" class="nav-link {{ request()->is('kategori') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-book"></i>
-                                <p>Kategori Pengaduan</p>
-                            </a>
-                        </li>
-                        <li class="nav-header">LAPORAN</li>
-                        <li class="nav-item">
-                            <a href="/pengaduan" class="nav-link {{ request()->is('pengaduan') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-envelope"></i>
-                                <p>Laporan Masuk</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/tanggapan" class="nav-link {{ request()->is('tanggapan') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-envelope"></i>
-                                <p>Laporan Masuk</p>
-                            </a>
-                        </li>
-                        <li class="nav-header">Report</li>
-                        <li class="nav-item">
-                            <a href="/Generate" class="nav-link {{ request()->is('Generate') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-print"></i>
-                                <p>Generate Report</p>
-                            </a>
-                        </li>
-                        <li class="nav-header">Account</li>
-                        <li class="nav-item">
-                            <a href="/profile" class="nav-link {{ request()->is('profile') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>Profile</p>
-                            </a>
-                        </li>
-                        <button class="btn btn-secondary btn-md">
-                            <li class="fa fa-sign-out-alt"></li> Logout
-                        </button>
-                    </ul>
-                </nav>
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-header">MASTER DATA</li>
+                    <li class="nav-item">
+                        <a href="/dashboard" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Dashboard</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/masyarakat" class="nav-link {{ request()->is('masyarakat', 'tambah_masyarakat', 'edit_masyarakat/*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Masyarakat</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/pegawai" class="nav-link {{ request()->is('pegawai', 'tambah_pegawai', 'edit_pegawai/*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>Pegawai</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/kategori" class="nav-link {{ request()->is('kategori', 'tambah_kategori', 'edit_kategori/*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>Kategori Pengaduan</p>
+                        </a>
+                    </li>
+                    <li class="nav-header">LAPORAN</li>
+                    <li class="nav-item">
+                        <a href="/laporan" class="nav-link {{ request()->is('pengaduan', 'tambah_pengaduan', 'edit_pengaduan/*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-envelope"></i>
+                            <p>Laporan Masuk</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/tanggapan" class="nav-link {{ request()->is('tanggapan', 'tambah_tanggapan', 'edit_tanggapan*') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-comments"></i>
+                        <p>Tanggapan</p>
+                        </a>
+                    </li>
+                    <li class="nav-header">Report</li>
+                    <li class="nav-item">
+                        <a href="/Generate" class="nav-link {{ request()->is('Generate', 'Generate/*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-print"></i>
+                            <p>Generate Report</p>
+                        </a>
+                    </li>
+                    <li class="nav-header">Account</li>
+                    <li class="nav-item">
+                        <a href="/profile" class="nav-link {{ request()->is('profile', 'edit_profile') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>Profile</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="POST" action="">
+                            @csrf
+                            <button type="submit" class="btn btn-secondary btn-md">
+                                <i class="fa fa-sign-out-alt"></i> Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+
+
 
                 <!-- /.sidebar-menu -->
             </div>

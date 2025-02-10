@@ -27,7 +27,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Form Add Data Masyarakat</h3>
-                                <a href="/masyarakat.html" class="btn float-right btn-outline-warning btn-md">
+                                <a href="/masyarakat" class="btn float-right btn-outline-warning btn-md">
                                     <li class="fa fa-undo"></li> Kembali
                                 </a>
                             </div>
