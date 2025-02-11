@@ -25,7 +25,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Form Add Data Pegawai</h3>
-                                <a href="pegawai.html" class="btn float-right btn-outline-warning btn-md">
+                                <a href="/pegawai" class="btn float-right btn-outline-warning btn-md">
                                     <li class="fa fa-undo"></li> Kembali
                                 </a>
                             </div>

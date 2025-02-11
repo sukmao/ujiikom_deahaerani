@@ -30,31 +30,44 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
 
-                <form action="../../index3.html" method="post">
-                    <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- /.col -->
-                        <div class="col-12">
-                            <a href="dashboard.html" class="btn btn-outline-secondary btn-block" style="border-radius: 20px;"> <li class="fa fa-sign-in-alt"></li> Sign In</a>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
+                <form action="/store/login" method="post" class="mt-4">
+                @csrf
+                <!-- Username Input -->
+                <div class="form-group mb-3">
+                    <label for="username"><strong>Username</strong></label>
+                    <input
+                        name="username"
+                        type="text"
+                        class="form-control @error('username') is-invalid @enderror"
+                        id="username"
+                        placeholder="Masukkan Username Anda"
+                        value="{{ old('username') }}"
+                    >
+                    @error('username')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Password Input -->
+                <div class="form-group mb-3">
+                    <label for="password"><strong>Password</strong></label>
+                    <input
+                        name="password"
+                        type="password"
+                        class="form-control @error('password') is-invalid @enderror"
+                        id="password"
+                        placeholder="Masukkan Password Anda"
+                    >
+                    @error('password')
+                        <p class="text-danger">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary btn-block mt-2">LOGIN</button>
+                </div>
+            </form>
             </div>
             <!-- /.login-card-body -->
         </div>
