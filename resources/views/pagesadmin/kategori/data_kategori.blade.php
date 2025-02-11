@@ -24,7 +24,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Data Kategori</h3>
-                                <a href="kategori-add.html" class="btn float-right btn-outline-secondary btn-md">
+                                <a href="tambah_kategori" class="btn float-right btn-outline-secondary btn-md">
                                     <li class="fa fa-plus"></li> Add Data Kategori
                                 </a>
                             </div>
@@ -41,28 +41,65 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php $no = 1; @endphp
+                                        @foreach ($kategoris as $kategori)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Kekerasan</td>
-                                            <td>Deskripsi tentang jenis pengaduan kekerasan</td>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $kategori->nama_kategori }}</td>
+                                            <td>{{ $kategori->deskripsi }}</td>
+                                            @unless(auth()->user()->role == 'petugas')
+
                                             <td>
-                                                <a href="kategori-add.html" class="btn btn-warning btn-xs"
-                                                    title="Edit Masyarakat">
-                                                    <li class="fa fa-edit"></li>
+                                                <a href="/edit_kategori/{{$kategori->id}}" class="btn btn-info btn-sm">Edit</a>
+                                                <a href="javascript:void(0);" class="btn btn-danger"
+                                                    data-toggle="tooltip"
+                                                    data-placement="top"
+                                                    title="Hapus"
+                                                    onclick="confirmDeletion({{ $kategori->id }});">
+                                                    <i class="fa fa-close color-danger">Hapus</i>
                                                 </a>
+
+                                                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                                    <script>
+                                                        function confirmDeletion(id) {
+                                                            Swal.fire({
+                                                                title: 'Yakin ingin menghapus data ini?',
+                                                                icon: 'warning',
+                                                                showCancelButton: true,
+                                                                confirmButtonColor: '#d33',
+                                                                cancelButtonColor: '#3085d6',
+                                                                confirmButtonText: 'Ya, hapus!',
+                                                                cancelButtonText: 'Batal'
+                                                            }).then((result) => {
+                                                                if (result.isConfirmed) {
+                                                                    // Buat form secara dinamis untuk method DELETE
+                                                                    const form = document.createElement('form');
+                                                                    form.action = `/destroy_kategori/${id}`;
+                                                                    form.method = 'POST';
+
+                                                                    const csrfField = document.createElement('input');
+                                                                    csrfField.type = 'hidden';
+                                                                    csrfField.name = '_token';
+                                                                    csrfField.value = '{{ csrf_token() }}';
+                                                                    form.appendChild(csrfField);
+
+                                                                    const methodField = document.createElement('input');
+                                                                    methodField.type = 'hidden';
+                                                                    methodField.name = '_method';
+                                                                    methodField.value = 'DELETE';
+                                                                    form.appendChild(methodField);
+
+                                                                    document.body.appendChild(form);
+                                                                    form.submit();
+                                                                }
+                                                            });
+                                                        }
+                                                    </script>
+
                                             </td>
+                                            @endunless
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>Pencemaran</td>
-                                            <td>Deskripsi tentang jenis pengaduan Pencemaran Lingkungan</td>
-                                            <td>
-                                                <a href="kategori-add.html" class="btn btn-warning btn-xs"
-                                                    title="Edit Masyarakat">
-                                                    <li class="fa fa-edit"></li>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        @endforeach
 
                                     </tbody>
                                 </table>

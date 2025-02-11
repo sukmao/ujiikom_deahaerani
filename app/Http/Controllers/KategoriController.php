@@ -10,12 +10,12 @@ class KategoriController extends Controller
     //
     public function index(){
         $kategoris=Kategori::paginate(5);
-        return view('admin.kategori.data_kategori',compact('kategoris'));
+        return view('pagesadmin.kategori.data_kategori',compact('kategoris'));
     }
 
     public function create(){
         $kategoris = Kategori::all();
-        return view('admin.kategori.data_kategori',compact('kategoris'));
+        return view('pagesadmin.kategori.tambah_kategori',compact('kategoris'));
     }
 
     public function store(Request $request){
@@ -35,7 +35,7 @@ class KategoriController extends Controller
 
     public function edit($id){
         $kategori = Kategori::findOrFail($id);
-        return view('admin.kategori.edit_kategori',compact('kategori'));
+        return view('pagesadmin.kategori.edit_kategori',compact('kategori'));
     }
 
     public function update(Request $request, $id)

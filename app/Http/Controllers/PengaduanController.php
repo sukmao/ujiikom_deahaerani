@@ -21,7 +21,7 @@ class PengaduanController extends Controller
 {
     $petugas = Admin::paginate(3); // Pagination for petugas
     $pengaduans = Pengaduan::with('masyarakat', 'kategori')->latest()->paginate(3); // Pagination for pengaduans
-    return view('admin.laporan.laporan_keamanan', compact('petugas', 'pengaduans'));
+    return view('pagesadmin.laporan.data_laporan', compact('petugas', 'pengaduans'));
 }
 
     /**
@@ -34,7 +34,7 @@ class PengaduanController extends Controller
 
         $masyarakats = Admin::all();
          $kategoris = Kategori::all(); // Pastikan Kategori memiliki data
-         return view('masyarakat.create_pengaduan',compact('masyarakats','kategoris'));
+         return view('pagesadmin.laporan.tambah_laporan',compact('masyarakats','kategoris'));
      }
 
 
@@ -105,7 +105,7 @@ class PengaduanController extends Controller
         $kategoris = Kategori::all();
         $pengaduan = Pengaduan::findOrFail($id);
 
-        return view('admin.laporan.edit_laporan', compact('pengaduan', 'masyarakats', 'kategoris'));
+        return view('pagesadmin.laporan.edit_laporan', compact('pengaduan', 'masyarakats', 'kategoris'));
     }
 
     /**

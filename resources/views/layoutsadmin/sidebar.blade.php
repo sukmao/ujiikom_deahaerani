@@ -48,7 +48,7 @@
                     </li>
                     <li class="nav-header">LAPORAN</li>
                     <li class="nav-item">
-                        <a href="/laporan" class="nav-link {{ request()->is('laporan', 'tambah_pengaduan', 'edit_pengaduan/*') ? 'active' : '' }}">
+                        <a href="/laporan" class="nav-link {{ request()->is('laporan', 'tambah_laporan', 'edit_laporan/*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>Laporan Masuk</p>
                         </a>
