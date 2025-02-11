@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\MasyarakatController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -43,9 +45,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/pegawai',function(){
         return view('pagesadmin.pegawai.data_pegawai');
     });
-    Route::get('/tambah_pegawai',function(){
-        return view('pagesadmin.pegawai.tambah_pegawai');
-    });
+    Route::get('/tambah_pegawai',[PegawaiController::class,'index']);
     Route::get('/edit_pegawai',function(){
         return view('pagesadmin.pegawai.edit_pegawai');
     });
@@ -64,9 +64,7 @@ Route::middleware(['auth'])->group(function(){
 
 
     // masyarakat
-    Route::get('/masyarakat',function(){
-        return view('pagesadmin.masyarakat.data_masyarakat');
-    });
+    Route::get('/masyarakat',[MasyarakatController::class,'index']);
     Route::get('/tambah_masyarakat',function(){
         return view('pagesadmin.masyarakat.tambah_masyarakat');
     });
