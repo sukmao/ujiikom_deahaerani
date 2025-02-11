@@ -48,7 +48,7 @@
                     </li>
                     <li class="nav-header">LAPORAN</li>
                     <li class="nav-item">
-                        <a href="/laporan" class="nav-link {{ request()->is('pengaduan', 'tambah_pengaduan', 'edit_pengaduan/*') ? 'active' : '' }}">
+                        <a href="/laporan" class="nav-link {{ request()->is('laporan', 'tambah_pengaduan', 'edit_pengaduan/*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-envelope"></i>
                             <p>Laporan Masuk</p>
                         </a>
@@ -74,12 +74,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <form method="POST" action="">
-                            @csrf
-                            <button type="submit" class="btn btn-secondary btn-md">
-                                <i class="fa fa-sign-out-alt"></i> Logout
-                            </button>
-                        </form>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-secondary btn-md">
+                            <i class="fa fa-sign-out-alt"></i> Logout
+                        </button>
+                    </form>
+
                     </li>
                 </ul>
             </nav>
