@@ -100,13 +100,111 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
-                                                <td>12-12-2022</td>
-                                                <td>Limbah Pabrik ABCD</td>
-                                                <td>Pencemaran</td>
-                                                <td><button class="btn btn-primary btn-xs">
-                                                        <li class="fa fa-list"></li>
-                                                    </button> </td>
+                                            @php $no = 1; @endphp
+                                            @foreach ($pengaduans as $index => $pengaduan)
+                                                <tr>
+                                                    <td>{{ $index + 1 }}</td>
+                                                    <td>{{ $pengaduan->masyarakat->nama_lengkap ?? 'Tidak Ada Data' }}</td>
+                                                    <td>{{ $pengaduan->kategori->nama_kategori ?? 'Tidak Ada Data' }}</td>
+                                                    <td>{{ $pengaduan->tanggal_pengaduan }}</td>
+                                                    <td>{{ $pengaduan->isi_pengaduan }}</td>
+                                                    <td>
+                                                        @if ($pengaduan->foto)
+                                                            <img src="{{ Storage::url($pengaduan->foto) }}" alt="Foto Pengaduan" width="100">
+                                                        @else
+                                                            Tidak ada foto
+                                                        @endif
+                                                    </td>
+
+                                                    <td>
+                                                    @if(in_array($pengaduan->status, ['selesai', 'ditolak']))
+                                                        @if($pengaduan->status == 'ditolak' && auth()->user()->role == 'admin')
+                                                            <a href="/tambah_tanggapan/{{$pengaduan->id}}">
+                                                                <span class="badge bg-danger">
+                                                                    {{ ucfirst($pengaduan->status) }}
+                                                                </span>
+                                                            </a>
+                                                        @else
+                                                            <span class="badge {{ $pengaduan->status == 'selesai' ? 'bg-success' : 'bg-danger' }}">
+                                                                {{ ucfirst($pengaduan->status) }}
+                                                            </span>
+                                                        @endif
+                                                    @elseif($pengaduan->status == 'diproses' && auth()->user()->role == 'admin')
+                                                        <a href="/tambah_tanggapan/{{$pengaduan->id}}">
+                                                            <span class="badge bg-info">
+                                                                {{ ucfirst($pengaduan->status) }}
+                                                            </span>
+                                                        </a>
+                                                    @else
+                                                        {{-- Default status tanpa respons --}}
+                                                        <a href="/tambah_tanggapan/{{$pengaduan->id}}">
+                                                            <span class="badge bg-warning">
+                                                                belum ada respon
+                                                            </span>
+                                                        </a>
+
+                                                    @endif
+
+
+
+
+
+                                                    </td>
+                                                    @unless(auth()->user()->role == 'petugas')
+
+                                                    <td >
+
+
+                                                        <a href="/edit_pengaduan/{{$pengaduan->id}}"class="btn btn-sm btn-info mt-1">E</a>
+                                                        <!-- Link Penghapusan -->
+                                                        <form id="delete-form-{{ $pengaduan->id }}" action="{{ route('destroy_pengaduan', $pengaduan->id) }}" method="POST" style="display:inline-block;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDeletion({{ $pengaduan->id }})">
+                                                                H
+                                                            </button>
+                                                        </form>
+
+                                                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                                                <script>
+                                                    function confirmDeletion(pengaduanId) {
+                                                        Swal.fire({
+                                                            title: 'Apakah Anda yakin?',
+                                                            text: "Data pengaduan ini akan dihapus secara permanen!",
+                                                            icon: 'warning',
+                                                            showCancelButton: true,
+                                                            confirmButtonColor: '#d33',
+                                                            cancelButtonColor: '#3085d6',
+                                                            confirmButtonText: 'Ya, hapus!',
+                                                            cancelButtonText: 'Batal'
+                                                        }).then((result) => {
+                                                            if (result.isConfirmed) {
+                                                                document.getElementById('delete-form-' + pengaduanId).submit();
+                                                            }
+                                                        });
+                                                    }
+
+                                                    @if(session('success'))
+                                                        // Show success notification at the center
+                                                        Swal.fire({
+                                                            icon: 'success',
+                                                            title: 'Berhasil!',
+                                                            text: "{{ session('success') }}",
+                                                            timer: 3000,
+                                                            showConfirmButton: false,
+                                                            position: 'center' // Alert positioned at the center
+                                                        });
+                                                    @endif
+                                                </script>
+
+
+
+
+
+                                                    </td>
+                                                    @endunless
+                                                </tr>
+                                            @endforeach
                                             </tr>
                                         </tbody>
                                     </table>

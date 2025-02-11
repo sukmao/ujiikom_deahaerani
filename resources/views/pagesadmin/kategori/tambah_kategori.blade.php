@@ -32,19 +32,20 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <div class="col-md-6">
-                                    <div class="form form-group">
-                                        <label for="textNamaKategori">Nama Kategori</label>
-                                        <input type="text" name="textNamaKategori" id="textNamaKategori" class="form form-control">
-                                    </div>
-                                    <div class="form form-group">
-                                        <label for="textDeskripsi">Deskripsi</label>
-                                        <input type="text" name="textDeskripsi" id="textDeskripsi" class="form form-control">
-                                    </div>
-                                    <div class="form form-group">
-                                        <a href="kategori.html" class="btn btn-success btn-md"><li class="fa fa-save"></li> Simpan</a>
-                                    </div>
+                            <form action="/store/kategori" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="nama_kategori" class="form-label">Nama Kategori</label>
+                                    <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" placeholder="Masukkan nama kategori" required>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="deskripsi" class="form-label">Deskripsi</label>
+                                    <input type="text" name="deskripsi" id="deskripsi" class="form-control" placeholder="Masukkan deskripsi" required>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg mt-3 w-100">Simpan</button>
+                                </div>
+                            </form>
                             </div>
                             <!-- /.card-body -->
                         </div>

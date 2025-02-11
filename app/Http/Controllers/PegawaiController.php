@@ -13,16 +13,17 @@ class PegawaiController extends Controller {
     // Display a listing of the petugas
     public function index() {
         $petugass = User::whereIn('role', ['admin', 'petugas'])->get();
-        return view('admin.data_petugas.petugas_index', compact('petugass'));
+        return view('pagesadmin.pegawai.data_pegawai', compact('petugass'));
     }
 
     // Show the form for creating a new petugas
     public function create() {
-        return view('admin.data_petugas.tambah_petugas');
+        return view('pagesadmin.pegawai.tambah_pegawai');
     }
 
     // Store a newly created petugas in the database
     public function store(Request $request) {
+
         // Validasi data input
         $request->validate([
             'nik' => 'required|string|max:16|unique:users,nik',
@@ -47,13 +48,13 @@ class PegawaiController extends Controller {
             'role' => $request->role,
         ]);
 
-        return redirect('petugas')->with('success', 'Petugas berhasil ditambahkan!');
+        return redirect('pegawai')->with('success', 'Petugas berhasil ditambahkan!');
     }
 
     // Show the form for editing the specified petugas
     public function edit($id) {
         $petugas = User::findOrFail($id);
-        return view('admin.data_petugas.edit_petugas', compact('petugas'));
+        return view('pagesadmin.pegawai.edit_pegawai', compact('petugas'));
     }
 
     // Update the specified petugas in the database

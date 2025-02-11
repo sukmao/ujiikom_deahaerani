@@ -23,7 +23,7 @@ class AdminController extends Controller
             $adminss = null;
         }
 
-        return view('admin.profile.admin', compact('admins', 'adminss'));
+        return view('pagesadmin.pegawai.data_pegawai', compact('admins', 'adminss'));
     }
 
 

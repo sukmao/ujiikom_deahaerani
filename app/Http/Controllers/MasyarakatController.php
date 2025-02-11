@@ -42,7 +42,7 @@ class MasyarakatController extends Controller
     // Menampilkan halaman tambah data masyarakat
     public function create()
     {
-        return view('admin.masyarakat.tambahmasyarakat'); // Sesuaikan dengan nama view
+        return view('pagesadmin.masyarakat.tambah_masyarakat'); // Sesuaikan dengan nama view
     }
 
     // Menyimpan data masyarakat baru ke database
@@ -89,7 +89,7 @@ class MasyarakatController extends Controller
     public function edit($id)
     {
         $masyarakat = Admin::findOrFail($id);
-        return view('admin.masyarakat.edit_masyarakat', compact('masyarakat')); // Sesuaikan dengan nama view
+        return view('pagesadmin.masyarakat.edit_masyarakat', compact('masyarakat')); // Sesuaikan dengan nama view
     }
 
     // Memperbarui data masyarakat
