@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function(){
         return view('pagesmasyarakat.dashboard_masyarakat');
     });
     // dashboard admin
-    Route::get('/dashboard',[DashboardController::class,'index']);
+    Route::get('/dashboarddea',[DashboardController::class,'index']);
 
     // pegawai
     Route::get('/pegawai',[PegawaiController::class,'index']);
@@ -50,7 +50,7 @@ Route::middleware(['auth'])->group(function(){
 
 
     // pengaduan /laporan
-   
+
 
 
     // masyarakat

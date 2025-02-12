@@ -92,71 +92,44 @@
             <h4 class="card-title text-center">Form Pengaduan</h4>
         </div>
         <div class="card-body">
-        <form action="/store/pengaduan" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="row mb-4">
-                        <div class="col-md-6">
+            <form action="/pengaduan/store" method="POST" enctype="multipart/form-data">
+                @csrf
+                <!-- Hidden field for logged-in user -->
+                <input type="hidden" name="textNamaLogin" value="">
 
-                        <input type="hidden" value="{{ auth()->user()->id }}" name="masyarakat_id" id="masyarakat_id">
+                <!-- Kategori Pengaduan -->
+                <div class="form-group mt-3">
+                    <label for="kategori_id">Kategori Pengaduan</label>
+                    <select name="kategori_id" class="form-control">
+                        <option value="1">Kategori 1</option>
+                        <option value="2">Kategori 2</option>
+                        <option value="3">Kategori 3</option>
+                    </select>
+                </div>
 
+                <!-- Tanggal Pengaduan -->
+                <div class="form-group mt-3">
+                    <label for="tanggal_pengaduan">Tanggal Pengaduan</label>
+                    <input type="date" name="tanggal_pengaduan" class="form-control">
+                </div>
 
-                        </div>
-                        <div class="col-md-12">
-                            <label for="kategori_id" class="form-label fw-semibold">Masukan Kategori</label>
-                            <select name="kategori_id" class="form-control" required>
-                                <option value="{{old('kategori_id')}}">-- Pilih Kategori --</option>
-                                @foreach($kategoris as $kategori)
-                                    <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
-                                @endforeach
-                            </select>
-                            @error('kategori_id')
-                                <p class="text-danger small">{{ $message }}</p>
-                            @enderror
-                        </div>
-                    </div>
+                <!-- Foto Pengaduan -->
+                <div class="form-group mt-3">
+                    <label for="foto">Foto Pengaduan</label>
+                    <input type="file" name="foto" class="form-control-file">
+                </div>
 
-                    <div class="row mb-4">
+                <!-- Isi Pengaduan -->
+                <div class="form-group mt-3">
+                    <label for="isi_pengaduan">Isi Pengaduan</label>
+                    <textarea name="isi_pengaduan" class="form-control" rows="4" placeholder="Tulis pengaduan Anda di sini"></textarea>
+                </div>
 
-                        <div class="col-md-12">
-                            <label for="tanggal_pengaduan" class="form-label fw-semibold">Tanggal Pengaduan</label>
-                            <input type="date" value="{{ old('tanggal_pengaduan') }}" name="tanggal_pengaduan" id="tanggal_pengaduan" class="form-control form-control-lg" placeholder="Masukkan tanggal_pengaduan" >
-                            @error('tanggal_pengaduan')
-                                <p class="text-danger small">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-
-                        <div class="col-12 mb-3">
-                            <label for="foto">Upload Foto (Opsional)</label>
-                            <input type="file" id="foto" name="foto" class="form-control" accept="image/png, image/jpeg, image/jpg">
-                            @error('foto')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-
-
-
-                    </div>
-
-
-                    <div class="row mb-4">
-                    <div class="col-12 mb-3">
-                            <label for="isi_pengaduan">Isi Pengaduan</label>
-                            <textarea name="isi_pengaduan" class="form-control" rows="6" placeholder="Deskripsi Pengaduan Anda" >{{ old('isi_pengaduan') }}</textarea>
-                            @error('isi_pengaduan')
-                                <p class="text-danger">{{$message}}</p>
-                            @enderror
-                        </div>
-
-                    </div>
-
-
-
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-primary btn-lg w-100">Simpan Data Laporan</button>
-                    </div>
-                </form>
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-success btn-md mt-4 btn-block">
+                    <i class="bi bi-card-checklist"></i> Kirim Pengaduan
+                </button>
+            </form>
         </div>
     </div>
 </div>
