@@ -3,9 +3,6 @@
 namespace App\Models;
 
 use App\Models\Admin;
-use App\Models\Kategori;
-use App\Models\Tanggapan;
-use App\Models\Masyarakat;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -18,13 +15,13 @@ class Pengaduan extends Model
     protected $fillable = [
         'masyarakat_id',
         'kategori_id',
-        'tanggal_pengaduan',
+        'alamat',
         'isi_pengaduan',
         'foto',
         'status',
     ];
 
-    // Relasi ke model Masyarakat
+    // Relasi ke model Masyarakat (bukan Admin)
     public function masyarakat()
     {
         return $this->belongsTo(Admin::class, 'masyarakat_id');
@@ -37,13 +34,8 @@ class Pengaduan extends Model
     }
 
     // Relasi ke model Tanggapan
-    public function tanggapan()
+    public function tanggapans()
     {
         return $this->hasMany(Tanggapan::class);
-    }
-
-
-    public function petugas(){
-        return $this->belongsTo(Admin::class,'masyarakat_id');
     }
 }
