@@ -31,90 +31,83 @@
                 <p class="login-box-msg">Sign in to start your session</p>
 
                 <form action="/store/register" method="post">
-    @csrf
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <label><strong>NIK</strong></label>
-                <input name="nik" value="{{old('nik')}}" type="text" class="form-control" placeholder="masukan nik">
-                @error('nik')
-                    <p class="text-danger">{{$message}}</p>
-                @enderror
-            </div>
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label><strong>Nama Lengkap</strong></label>
+                                        <input name="nama_lengkap" value="{{ old('nama_lengkap') }}" type="text" class="form-control" placeholder="Masukan Nama Lengkap">
+                                        @error('nama_lengkap')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
 
-            <div class="form-group">
-                <label><strong>Nama Lengkap</strong></label>
-                <input name="nama_lengkap" value="{{old('nama_lengkap')}}" type="text" class="form-control" placeholder="masukan nama lengkap">
-                @error('nama_lengkap')
-                    <p class="text-danger">{{$message}}</p>
-                @enderror
-            </div>
+                                    <div class="form-group">
+                                        <label><strong>Jenis Kelamin</strong></label>
+                                        <select name="jenis_kelamin" class="form-control">
+                                            <option value="">-- Pilih Jenis Kelamin --</option>
+                                            <option value="laki-laki" {{ old('jenis_kelamin') == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                            <option value="perempuan" {{ old('jenis_kelamin') == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
+                                        </select>
+                                        @error('jenis_kelamin')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
 
-            <div class="form-group">
-                <label><strong>Jenis Kelamin</strong></label>
-                <select name="jenis_kelamin" class="form-control">
-                    <option value="{{old('jenis_kelamin')}}">-- Pilih Jenis Kelamin --</option>
-                    <option value="laki-laki" {{ old('jenis_kelamin') == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                    <option value="perempuan" {{ old('jenis_kelamin') == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
-                </select>
-                @error('jenis_kelamin')
-                    <p class="text-danger">{{$message}}</p>
-                @enderror
-            </div>
+                                    <div class="form-group">
+                                        <label><strong>Username</strong></label>
+                                        <input name="username" value="{{ old('username') }}" type="text" class="form-control" placeholder="Masukan Username">
+                                        @error('username')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
 
-            <div class="form-group">
-                <label><strong>Username</strong></label>
-                <input name="username" value="{{old('username')}}" type="text" class="form-control" placeholder="masukan username">
-                @error('username')
-                    <p class="text-danger">{{$message}}</p>
-                @enderror
-            </div>
-        </div>
+                                    <div class="form-group">
+                                        <label><strong>Password</strong></label>
+                                        <input name="password" type="password" class="form-control" placeholder="Masukan Password">
+                                        @error('password')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
 
-        <div class="col-md-6">
-            <div class="form-group">
-                <label><strong>Password</strong></label>
-                <input name="password" value="{{old('password')}}" type="password" class="form-control" placeholder="masukan password">
-                @error('password')
-                    <p class="text-danger">{{$message}}</p>
-                @enderror
-            </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label><strong>No Telepon</strong></label>
+                                        <input name="no_telepon" value="{{ old('no_telepon') }}" type="text" class="form-control" placeholder="Masukan No Telepon">
+                                        @error('no_telepon')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
 
-            <div class="form-group">
-                <label><strong>No Telepon</strong></label>
-                <input name="no_telepon" value="{{old('no_telepon')}}" type="text" class="form-control" placeholder="masukan nomor telepon">
-                @error('no_telepon')
-                    <p class="text-danger">{{$message}}</p>
-                @enderror
-            </div>
+                                    <div class="form-group">
+                                        <label><strong>Alamat</strong></label>
+                                        <textarea name="alamat" class="form-control" placeholder="Masukan Alamat">{{ old('alamat') }}</textarea>
+                                        @error('alamat')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
 
-            <div class="form-group">
-                <label><strong>Alamat</strong></label>
-                <textarea name="alamat" class="form-control" placeholder="masukan alamat">{{old('alamat')}}</textarea>
-                @error('alamat')
-                    <p class="text-danger">{{$message}}</p>
-                @enderror
-            </div>
+                                    <div class="form-group">
+                                        <label><strong>Role</strong></label>
+                                        <select name="role" class="form-control">
+                                            <option value="">-- Pilih Role --</option>
+                                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+                                            <option value="petugas" {{ old('role') == 'petugas' ? 'selected' : '' }}>Petugas</option>
+                                            <option value="masyarakat" {{ old('role') == 'masyarakat' ? 'selected' : '' }}>Masyarakat</option>
+                                        </select>
+                                        @error('role')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
 
-            <div class="form-group">
-                <label><strong>Role</strong></label>
-                <select name="role" class="form-control">
-                    <option value="{{old('role')}}">-- Pilih Role --</option>
-                    <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
-                    <option value="petugas" {{ old('role') == 'petugas' ? 'selected' : '' }}>Petugas</option>
-                    <option value="masyarakat" {{ old('role') == 'masyarakat' ? 'selected' : '' }}>Masyarakat</option>
-                </select>
-                @error('role')
-                    <p class="text-danger">{{$message}}</p>
-                @enderror
-            </div>
-        </div>
-    </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-block mt-2">REGISTER</button>
+                            </div>
+                        </form>
 
-    <div class="text-center">
-        <button type="submit" class="btn btn-primary btn-block mt-2">REGISTER</button>
-    </div>
-</form>
 
 <div class="new-account mt-3">
     <p>Sudah punya akun? <a class="text-primary" href="/login">Login</a></p>

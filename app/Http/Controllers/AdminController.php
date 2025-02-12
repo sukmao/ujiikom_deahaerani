@@ -2,78 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Admin;
+use App\Models\Admin; // Model yang digunakan tetap Admin karena tabelnya 'users'
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
-    /**
-     * Display a listing of all Admin.
-     */
-        public function show($id = null)
+    public function show($id = null)
     {
-        $admins = Admin::all();
-
-        if ($id) {
-            $adminss = Admin::findOrFail($id);
-        } else {
-            $adminss = null;
-        }
-
+        $admins = Admin::where('role', 'admin')->get();
+        $adminss = $id ? Admin::findOrFail($id) : null;
         return view('pagesadmin.pegawai.data_pegawai', compact('admins', 'adminss'));
     }
 
-
-
-    /**
-     * Show the form for creating a new Admin.
-     */
     public function create()
     {
-        $admins = Admin::all();
-        return view('admin.profile.tambah_admin',compact('admins'));
+        return view('admin.profile.tambah_admin');
     }
 
-    /**
-     * Store a newly created Admin in storage.
-     */
-    /**
- * Store a newly created Admin in storage.
- */
     public function store(Request $request)
     {
         $request->validate([
-            'nik'           => 'required|string|unique:users,nik', // Menambahkan regex untuk validasi NIK (hanya angka, 16 karakter)
             'nama_lengkap'  => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:laki-laki,perempuan',
-            'username'      => 'required|string|unique:users,username',
+            'username'      => 'required|string|max:255|unique:users,username',
             'password'      => 'required|string|min:8',
-            'no_telepon'    => 'required|string|max:15|regex:/^\+?[\d\s\-]+$/', // Regex untuk validasi nomor telepon (opsional format negara)
-            'alamat'        => 'required|string',
-            'role'          => 'required|in:admin,Admin,masyarakat',
-        ], [
-            'nik.required'           => 'NIK harus diisi.',
-            'nik.unique'             => 'NIK ini sudah terdaftar.',
-            'nik.max'                => 'NIK tidak boleh lebih dari 16 karakter.',
-            'nama_lengkap.required'  => 'Nama lengkap harus diisi.',
-            'jenis_kelamin.required' => 'Jenis kelamin harus dipilih.',
-            'username.required'      => 'Username harus diisi.',
-            'username.unique'        => 'Username ini sudah terdaftar.',
-            'password.required'      => 'Password harus diisi.',
-            'password.min'           => 'Password minimal 8 karakter.',
-            'no_telepon.required'    => 'Nomor telepon harus diisi.',
-            'no_telepon.regex'       => 'Nomor telepon hanya boleh berisi angka, spasi, atau tanda minus.',
-            'alamat.required'        => 'Alamat harus diisi.',
-            'role.required'          => 'Role harus dipilih.',
+            'no_telepon'    => 'required|string|max:15|regex:/^[0-9]+$/',
+            'alamat'        => 'required|string|max:255',
+            'role'          => 'required|in:admin,masyarakat',
         ]);
 
-
         Admin::create([
-            'nik'           => $request->nik,
-            'nama_Admin'  => $request->nama_Admin,
             'nama_lengkap'  => $request->nama_lengkap,
             'jenis_kelamin' => $request->jenis_kelamin,
             'username'      => $request->username,
@@ -86,92 +46,62 @@ class AdminController extends Controller
         return redirect('admin')->with('success', 'Admin berhasil ditambahkan.');
     }
 
-/**
- * Update the specified Admin in storage.
- */
-
-
-    /**
-     * Show the form for editing the specified Admin.
-     */
     public function edit($id)
     {
         $admins = Admin::findOrFail($id);
         return view('admin.profile.edit_admin', compact('admins'));
     }
 
-    /**
-     * Update the specified Admin in storage.
-     */
     public function update(Request $request, $id)
     {
-        $admins = User::findOrFail($id);
+        $admins = Admin::findOrFail($id);
 
-        // Validation rules
         $request->validate([
-            'nik' => 'required|string|max:16|unique:users,nik,' . $id,
-            'nama_lengkap' => 'required|string|max:255',
+            'nama_lengkap'  => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:laki-laki,perempuan',
-            'username' => 'required|string|max:255|unique:users,username,' . $id,
-            'password' => 'nullable|string|min:8',
-            'no_telepon' => 'required|string|max:15|regex:/^[0-9]+$/',
-            'alamat' => 'required|string|max:255',
-            'role' => 'required|in:admin,Admin,masyarakat',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'username'      => 'required|string|max:255|unique:users,username,' . $id,
+            'password'      => 'nullable|string|min:8',
+            'no_telepon'    => 'required|string|max:15|regex:/^[0-9]+$/',
+            'alamat'        => 'required|string|max:255',
+            'role'          => 'required|in:admin,masyarakat',
+            'foto'          => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        // Update admin data
-        $admins->nik = $request->nik;
-        $admins->nama_lengkap = $request->nama_lengkap;
-        $admins->jenis_kelamin = $request->jenis_kelamin;
-        $admins->username = $request->username;
+        $admins->update([
+            'nama_lengkap'  => $request->nama_lengkap,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'username'      => $request->username,
+            'no_telepon'    => $request->no_telepon,
+            'alamat'        => $request->alamat,
+            'role'          => $request->role,
+            'password'      => $request->filled('password') ? bcrypt($request->password) : $admins->password,
+        ]);
 
-        // Hash password only if provided
-        if ($request->filled('password')) {
-            $admins->password = bcrypt($request->password);
-        }
-
-        $admins->no_telepon = $request->no_telepon;
-        $admins->alamat = $request->alamat;
-        $admins->role = $request->role;
-
-        // Handle the photo upload
         if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
-
-            // Hapus foto lama jika ada
             if ($admins->foto && Storage::exists('public/' . $admins->foto)) {
                 Storage::delete('public/' . $admins->foto);
             }
-
-            // Simpan foto baru di direktori 'foto_admin' dalam storage
-            $path = $foto->store('foto_admin', 'public');
-
-            // Simpan path foto tanpa prefix 'public/' ke database
-            $admins->foto = $path;
+            $path = $request->file('foto')->store('foto_admin', 'public');
+            $admins->update(['foto' => $path]);
         }
 
-
-        $admins->save();
-
-        return redirect('admin')->with('success', 'Admin berhasil diperbarui!');
+        return redirect('admin')->with('success', 'Admin berhasil diperbarui.');
     }
 
-
-
-
-    public function detailprofile($id){
+    public function detailprofile($id)
+    {
         $adminss = Admin::findOrFail($id);
-        return view('admin.profile.detail_profile',compact('adminss'));
+        return view('admin.profile.detail_profile', compact('adminss'));
     }
 
-
-    /**
-     * Remove the specified Admin from storage.
-     */
     public function destroy($id)
     {
         $admin = Admin::findOrFail($id);
+
+        if ($admin->foto && Storage::exists('public/' . $admin->foto)) {
+            Storage::delete('public/' . $admin->foto);
+        }
+
         $admin->delete();
 
         return redirect('admin')->with('success', 'Admin berhasil dihapus.');
