@@ -89,7 +89,7 @@ class PengaduanController extends Controller
         $pengaduan->status = '0'; // Status default
         $pengaduan->save();
 
-        return redirect('daftar_pengaduan')->with('success', 'Data Berhasil Dibuat');
+        return redirect('dashboard_masyarakat')->with('success', 'Data Berhasil Dibuat');
 
     }
 
@@ -131,7 +131,7 @@ class PengaduanController extends Controller
 
          $pengaduan->update($validatedData);
 
-         return redirect('data_pengaduan')->with('success', 'Pengaduan berhasil diperbarui!');
+         return redirect('laporan')->with('success', 'Pengaduan berhasil diperbarui!');
      }
 
 
@@ -154,7 +154,7 @@ class PengaduanController extends Controller
         $pengaduan->delete();
 
         // Redirect ke halaman daftar pengaduan dengan pesan sukses
-        return redirect('data_pengaduan')->with('success', 'Pengaduan berhasil dihapus');
+        return redirect('dashboarddea')->with('success', 'Pengaduan berhasil dihapus');
     }
 
 
@@ -203,7 +203,7 @@ public function tanggapan()
 {
     // Mengurutkan tanggapan berdasarkan tanggal terbaru
     $tanggapans = Tanggapan::orderBy('tanggal_tanggapan', 'desc')->paginate(2);
-    return view('admin.tanggapan.data_tanggapan', compact('tanggapans'));
+    return view('pagesadmin.tanggapan.data_tanggapan', compact('tanggapans'));
 }
 
 
@@ -213,7 +213,7 @@ public function tanggapan()
     {
         $pengaduan = Pengaduan::findOrFail($id);
 
-        return view('admin.tanggapan.tambah_tanggapan', compact('pengaduan'));
+        return view('pagesadmin.tanggapan.tambah_tanggapan', compact('pengaduan'));
     }
 
 
@@ -250,7 +250,7 @@ public function tanggapan()
     public function editing($id){
         $tanggapans = Tanggapan::findOrFail($id);
         $pengaduans = Pengaduan::findOrFail($id);
-        return view('admin.tanggapan.edit_tanggapan' , compact('tanggapans','pengaduans'));
+        return view('pagesadmin.tanggapan.edit_tanggapan' , compact('tanggapans','pengaduans'));
     }
 
 

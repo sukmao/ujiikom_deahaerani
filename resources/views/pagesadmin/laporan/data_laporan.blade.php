@@ -53,10 +53,11 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
+                                                    <th>nama pengadu</th>
+                                                    <th>Kategori Pengaduan</th>
                                                     <th>Tanggal Pengaduan</th>
-                                                    <th>Judul Pengaduan</th>
-                                                    <th>Nama Pengadu</th>
-                                                    <th>Kategori</th>
+                                                    <th>isi pengadu</th>
+                                                    <th>foto</th>
                                                     <th>Status</th>
                                                     <th>Aksi</th>
                                                 </tr>
@@ -71,11 +72,11 @@
                                                         <td>{{ $pengaduan->tanggal_pengaduan }}</td>
                                                         <td>{{ $pengaduan->isi_pengaduan }}</td>
                                                         <td>
-                                                            @if ($pengaduan->foto)
-                                                                <img src="{{ Storage::url($pengaduan->foto) }}" alt="Foto Pengaduan" width="100">
-                                                            @else
-                                                                Tidak ada foto
-                                                            @endif
+                                                        @if ($pengaduan->foto)
+                                                            <img src="{{ Storage::url($pengaduan->foto) }}" alt="Foto Pengaduan" width="100">
+                                                        @else
+                                                            Tidak ada foto
+                                                        @endif
                                                         </td>
 
                                                         <td>
@@ -117,7 +118,7 @@
                                                         <td >
 
 
-                                                            <a href="/edit_pengaduan/{{$pengaduan->id}}"class="btn btn-sm btn-info mt-1">E</a>
+                                                            <a href="/edit_laporan/{{$pengaduan->id}}"class="btn btn-sm btn-info mt-1">E</a>
                                                             <!-- Link Penghapusan -->
                                                             <form id="delete-form-{{ $pengaduan->id }}" action="{{ route('destroy_pengaduan', $pengaduan->id) }}" method="POST" style="display:inline-block;">
                                                                 @csrf

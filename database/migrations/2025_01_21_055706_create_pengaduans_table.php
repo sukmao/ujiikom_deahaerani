@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('masyarakat_id');
             $table->unsignedBigInteger('kategori_id');
-            $table->string('alamat');
+            $table->date('tanggal_pengaduan');
             $table->text('isi_pengaduan');
             $table->string('foto')->nullable(); // Kolom foto nullable
             $table->enum('status', ['ditolak','0', 'diproses', 'selesai'])->default('0'); // Perbaikan default value
