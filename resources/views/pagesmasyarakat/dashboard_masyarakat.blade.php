@@ -92,7 +92,8 @@
             <h4 class="card-title text-center">Form Pengaduan</h4>
         </div>
         <div class="card-body">
-        <form action="/store/pengaduan" method="POST" enctype="multipart/form-data">
+        <div class="col-lg-6">
+          <form action="/store/laporan" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-4">
                         <div class="col-md-6">
@@ -157,6 +158,8 @@
                         <button type="submit" class="btn btn-primary btn-lg w-100">Simpan Data Laporan</button>
                     </div>
                 </form>
+
+          </div>
         </div>
     </div>
 </div>

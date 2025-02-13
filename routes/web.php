@@ -35,22 +35,22 @@ Route::middleware(['auth'])->group(function(){
 
 
     // dashboard masyarakat
-    Route::get('/dashboard_masyarakat',function(){
-        return view('pagesmasyarakat.dashboard_masyarakat');
-    });
+    Route::get('/dashboard_masyarakat',[MasyarakatController::class,'dashboard']);
     // dashboard admin
-    Route::get('/dashboard',[DashboardController::class,'index']);
+    Route::get('/dashboarddea',[DashboardController::class,'index']);
 
     // pegawai
-    Route::get('/pegawai',[PegawaiController::class,'index']);
-    Route::get('/tambah_pegawai',[PegawaiController::class,'create']);
-    Route::post('/store/pegawai',[PegawaiController::class,'store']);
-    Route::get('/edit_pegawai/{id}',[PegawaiController::class,'edit']);
-    Route::post('/update/pegawai/{id}',[PegawaiController::class,'update']);
+    Route::get('/pegawai', [PegawaiController::class, 'index']);
+    Route::get('/tambah_pegawai', [PegawaiController::class, 'create']);
+    Route::post('/store/pegawai', [PegawaiController::class, 'store']);
+    Route::get('/edit_pegawai/{id}', [PegawaiController::class, 'edit']);
+    Route::post('/update/pegawai/{id}', [PegawaiController::class, 'update']);
+    Route::delete('/destroy_petugas/{id}', [PegawaiController::class, 'destroy'])->name('petugas.destroy');
+
 
 
     // pengaduan /laporan
-   
+
 
 
     // masyarakat
@@ -58,7 +58,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/tambah_masyarakat',[MasyarakatController::class,'create']);
     Route::post('/store/masyarakat',[MasyarakatController::class,'store']);
     Route::get('/edit_masyarakat/{id}',[MasyarakatController::class,'edit']);
-    Route::post('/update/masyarakat{id}',[MasyarakatController::class,'update']);
+    Route::post('/update_masyarakat/{id}', [MasyarakatController::class, 'update']);
+
 
 
 
@@ -69,6 +70,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/store/kategori',[KategoriController::class,'store']);
     Route::get('/edit_kategori/{id}',[KategoriController::class,'edit']);
     Route::post('/update/kategori/{id}',[KategoriController::class,'update']);
+    Route::delete('/destroy_kategori/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
 
     // profile
     Route::get('/profile',function(){
@@ -82,10 +84,24 @@ Route::middleware(['auth'])->group(function(){
     Route::post('/store/laporan', [PengaduanController::class,'store']);
     Route::get('/edit_laporan/{id}',[PengaduanController::class,'edit']);
     Route::post('/update/laporan/{id}',[PengaduanController::class,'update']);
+    Route::delete('/destroy_pengaduan/{id}', [PengaduanController::class, 'destroy'])->name('destroy_pengaduan');
+
+
+    Route::get('data_tanggapan', [PengaduanController::class, 'tanggapan'])->name('tanggapan.index');
+    Route::get('/tambah_tanggapan/{id}', [PengaduanController::class, 'createtanggapan']);
+    Route::post('/update_tanggapan/{id}', [PengaduanController::class, 'updateTanggapan']);
+    Route::post('/update/data_pengaduan/{id}', [PengaduanController::class, 'update']);
+    Route::get('/edit_tanggapan/{id}', [PengaduanController::class, 'editing']);
+    Route::delete('/destroy_tanggapan/{id}', [PengaduanController::class, 'hapus'])->name('tanggapan.destroy');
 
 
 
+    Route::get('/indexx',function(){
+        return view('index');
+    });
 
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+

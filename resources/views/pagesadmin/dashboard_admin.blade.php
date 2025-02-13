@@ -109,8 +109,9 @@
                                                     <td>{{ $pengaduan->tanggal_pengaduan }}</td>
                                                     <td>{{ $pengaduan->isi_pengaduan }}</td>
                                                     <td>
+                                                    <td>
                                                         @if ($pengaduan->foto)
-                                                            <img src="{{ Storage::url($pengaduan->foto) }}" alt="Foto Pengaduan" width="100">
+                                                            <img src="{{ asset('storage/foto_pengaduan/' . $pengaduan->foto) }}" alt="Foto Pengaduan" width="100">
                                                         @else
                                                             Tidak ada foto
                                                         @endif
@@ -155,7 +156,7 @@
                                                     <td >
 
 
-                                                        <a href="/edit_pengaduan/{{$pengaduan->id}}"class="btn btn-sm btn-info mt-1">E</a>
+                                                        <a href="/edit_laporan/{{$pengaduan->id}}"class="btn btn-sm btn-info mt-1">E</a>
                                                         <!-- Link Penghapusan -->
                                                         <form id="delete-form-{{ $pengaduan->id }}" action="{{ route('destroy_pengaduan', $pengaduan->id) }}" method="POST" style="display:inline-block;">
                                                             @csrf

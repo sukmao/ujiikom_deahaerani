@@ -34,6 +34,13 @@
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
+                                <div class="form-group">
+                                    <label><strong>NIK</strong></label>
+                                    <input name="nik" value="{{old('nik')}}" type="text"  class="form-control" placeholder="masukan nik">
+                                    @error('nik')
+                                        <p class="text-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
                                     <div class="form-group">
                                         <label><strong>Nama Lengkap</strong></label>
                                         <input name="nama_lengkap" value="{{ old('nama_lengkap') }}" type="text" class="form-control" placeholder="Masukan Nama Lengkap">
@@ -129,7 +136,6 @@
 </body>
 
 </html>
-
 
 
 

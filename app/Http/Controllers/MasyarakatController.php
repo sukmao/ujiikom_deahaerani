@@ -35,7 +35,7 @@ class MasyarakatController extends Controller
         ->orderBy('tanggal_pengaduan', 'desc')
         ->paginate(4); // Batasi 10 data per halaman
         $kategoris = Kategori::all();
-        return view('masyarakat.masyarakat', compact('pengaduans','kategoris'));
+        return view('pagesmasyarakat.dashboard_masyarakat', compact('pengaduans','kategoris'));
     }
 
 
@@ -98,10 +98,10 @@ class MasyarakatController extends Controller
         $masyarakat = Admin::findOrFail($id);
 
         $request->validate([
-            'nik' => 'required|max:16|unique:masyarakats,nik,' . $id,
+            'nik' => 'required|max:16|unique:users,nik,' . $id,
             'nama_lengkap' => 'required|string|max:255',
             'jenis_kelamin' => 'required|in:laki-laki,perempuan',
-            'username' => 'required|max:255|unique:masyarakats,username,' . $id,
+            'username' => 'required|max:255|unique:users,username,' . $id,
             'password' => 'nullable|string|min:8',
             'no_telepon' => 'required|max:15',
             'alamat' => 'required|string',
@@ -117,7 +117,7 @@ class MasyarakatController extends Controller
             'alamat' => $request->alamat,
         ]);
 
-        return redirect('masyarakat')->with('success', 'Data masyarakat berhasil diperbarui.');
+        return redirect('/masyarakat')->with('success', 'Data masyarakat berhasil diperbarui.');
     }
 
     // Menghapus data masyarakat
