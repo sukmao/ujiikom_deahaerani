@@ -30,7 +30,7 @@ namespace App\Models;
          */
         public function pengaduan()
         {
-            return $this->belongsTo(Pengaduan::class);
+            return $this->belongsTo(Pengaduan::class,'pengaduan_id');
         }
 
 

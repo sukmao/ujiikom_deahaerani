@@ -50,7 +50,7 @@
                                             @unless(auth()->user()->role == 'petugas')
 
                                             <td>
-                                                <a href="/edit_kategori/{{$kategori->id}}" class="btn btn-info btn-sm">Edit</a>
+                                                <a href="/edit_kategori/{{$kategori->id}}" class="btn btn-warning btn-sm">Edit</a>
                                                 <a href="javascript:void(0);" class="btn btn-danger"
                                                     data-toggle="tooltip"
                                                     data-placement="top"
