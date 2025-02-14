@@ -73,13 +73,11 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/destroy_kategori/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
 
     // profile
-    Route::get('/profile',function(){
-        return view('pagesadmin.profile.data_profile');
-    });
+    Route::get('/profile',[DashboardController::class,'profil']);
 
 
     // pengaduan
-    Route::get('/laporan',[PengaduanController::class,'index']);
+    Route::get('/laporan',[PengaduanController::class,'index']) ->name('laporan');
     Route::get('/tambah_laporan',[PengaduanController::class,'tambah']);
     Route::post('/store/laporan', [PengaduanController::class,'store']);
     Route::get('/edit_laporan/{id}',[PengaduanController::class,'edit']);

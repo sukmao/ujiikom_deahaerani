@@ -27,25 +27,49 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-3 float-right">
-                                        <label for="selectFilter">Filter Berdasarkan status</label>
-                                        <select name="selectFilter" id="select Filter" class="form form-control">
-                                            <option value="">-- Filter Status --</option>
-                                            <option value="">New</option>
-                                            <option value="">Process</option>
-                                            <option value="">Selesai</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 float-right">
-                                        <label for="selectFilter">Filter Berdasarkan Kategori</label>
-                                        <select name="selectFilter" id="select Filter" class="form form-control">
-                                            <option value="">-- Filter Kategori --</option>
-                                            <option value="">Pencemaran</option>
-                                            <option value="">Kekerasan</option>
-                                        </select>
-                                    </div>
+                            <div class="row">
+    <!-- Filter Berdasarkan Status -->
+                                <div class="col-md-3 float-right">
+                                    <label for="selectFilterStatus">Filter Berdasarkan Status</label>
+                                    <select name="status" id="selectFilterStatus" class="form-control" onchange="this.form.submit()">
+                                        <option value="">-- Filter Status --</option>
+                                        <option value="0" {{ request('status') == 'o' ? 'selected' : '' }}>New</option>
+                                        <option value="diproses" {{ request('status') == 'diproses' ? 'selected' : '' }}>Process</option>
+                                        <option value="selesai" {{ request('status') == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                                    </select>
                                 </div>
+
+                                <!-- Filter Berdasarkan Kategori -->
+                                <div class="col-md-3 float-right">
+                                    <label for="selectFilterKategori">Filter Berdasarkan Kategori</label>
+                                    <select name="kategori" id="selectFilterKategori" class="form-control" onchange="this.form.submit()">
+                                        <option value="">-- Filter Kategori --</option>
+                                        @foreach ($kategoris as $kategori)
+                                            <option value="{{ $kategori->id }}" {{ request('kategori') == $kategori->id ? 'selected' : '' }}>
+                                                {{ $kategori->nama_kategori }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Form agar filter langsung submit -->
+                            <form method="GET" action="{{ route('laporan') }}" id="filterForm">
+                                @csrf
+                                <button>filter</button>
+                            </form>
+
+                            <script>
+                                // Auto-submit form saat filter berubah
+                                document.getElementById("selectFilterStatus").addEventListener("change", function () {
+                                    document.getElementById("filterForm").submit();
+                                });
+
+                                document.getElementById("selectFilterKategori").addEventListener("change", function () {
+                                    document.getElementById("filterForm").submit();
+                                });
+                            </script>
+
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-12 col-xs-12">
@@ -168,6 +192,9 @@
 
                                             </tbody>
                                         </table>
+                                        <div class="d-flex justify-content-center">
+                                    {{ $pengaduans->links() }}
+                                </div>
                                     </div>
                                 </div>
                             </div>

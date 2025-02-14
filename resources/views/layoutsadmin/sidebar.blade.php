@@ -3,7 +3,7 @@
             <a href="../../index3.html" class="brand-link">
                 <img src="{{asset('dist/img/AdminLTELogo.png')}}" alt="APM Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
-                <span class="brand-text font-weight-light">APM dea</span>
+                <span class="brand-text font-weight-light">{{ auth()->user()->nama_lengkap }}</span>
             </a>
 
             <!-- Sidebar -->
@@ -28,6 +28,7 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
+                    @unless(auth()->user()->role == 'petugas')
                     <li class="nav-item">
                         <a href="/masyarakat" class="nav-link {{ request()->is('masyarakat', 'tambah_masyarakat', 'edit_masyarakat/*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-users"></i>
@@ -46,6 +47,7 @@
                             <p>Kategori Pengaduan</p>
                         </a>
                     </li>
+                    @endunless
                     <li class="nav-header">LAPORAN</li>
                     <li class="nav-item">
                         <a href="/laporan" class="nav-link {{ request()->is('laporan', 'tambah_laporan', 'edit_laporan/*') ? 'active' : '' }}">
@@ -59,6 +61,7 @@
                         <p>Tanggapan</p>
                         </a>
                     </li>
+                    @unless(auth()->user()->role == 'petugas')
                     <li class="nav-header">Report</li>
                     <li class="nav-item">
                         <a href="/Generate" class="nav-link {{ request()->is('Generate', 'Generate/*') ? 'active' : '' }}">
@@ -66,6 +69,7 @@
                             <p>Generate Report</p>
                         </a>
                     </li>
+                    @endunless
                     <li class="nav-header">Account</li>
                     <li class="nav-item">
                         <a href="/profile" class="nav-link {{ request()->is('profile', 'edit_profile') ? 'active' : '' }}">

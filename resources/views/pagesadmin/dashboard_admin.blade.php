@@ -29,7 +29,7 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text">Masyarakat</span>
                                     <span class="info-box-number">
-                                        10
+                                        {{ $jumlahMasyarakat }}
                                     </span>
                                 </div>
                                 <!-- /.info-box-content -->
@@ -43,7 +43,7 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text">Kategori Pengaduan</span>
                                     <span class="info-box-number">
-                                        10
+                                        {{ $jumlahKategori }}
                                     </span>
                                 </div>
                                 <!-- /.info-box-content -->
@@ -57,7 +57,7 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text">Laporan Pengaduan</span>
                                     <span class="info-box-number">
-                                        {{ $pengaduans }}
+                                        {{ $jumlahLaporan }}
                                     </span>
                                 </div>
                                 <!-- /.info-box-content -->
@@ -71,7 +71,7 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text">Laporan Baru</span>
                                     <span class="info-box-number">
-                                        200
+                                        {{ $jumlahLaporanBaru }}
                                     </span>
                                 </div>
                                 <!-- /.info-box-content -->
@@ -98,7 +98,9 @@
                                                 <th>isi pengaduan</th>
                                                 <th>foto</th>
                                                 <th>status</th>
+                                                @unless(auth()->user()->role == 'petugas')
                                                 <th>Aksi</th>
+                                                @endunless
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -114,7 +116,7 @@
 
                                                     <td>
                                                         @if ($pengaduan->foto)
-                                                            <img src="{{ Storage::url($pengaduan->foto) }}" alt="Foto Pengaduan" width="100">
+                                                            <img src="{{ Storage::url($pengaduan->foto) }}" alt="Foto Pengaduan" width="50">
                                                         @else
                                                             Tidak ada foto
                                                         @endif
@@ -212,6 +214,9 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    {{ $pengaduans->links() }}
                                 </div>
                             </div>
                             <!-- /.card-body -->
