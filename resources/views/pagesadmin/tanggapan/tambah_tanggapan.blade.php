@@ -1,5 +1,5 @@
-@extends('layoutsadmindua.app')
-@section('content')
+@extends('layoutsadmin.app')
+@section('contentadmin')
 <div class="card">
     <div class="card-header">
         <h4>Buat Tanggapan</h4>

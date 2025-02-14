@@ -12,7 +12,13 @@
           <li><a class="nav-link scrollto" href="#featured-services">information</a></li>
           <li><a class="nav-link scrollto" href="#pengaduan">pengaduan</a></li>
           <li><a class="nav-link scrollto" href="#contact">Kontak Kami</a></li>
-          <li><a class="nav-link scrollto" href="/login">Register / Login</a></li>
+          <li>
+            @if (auth()->login ?? 'login')
+                <a href="/logout">logout</a>
+            @else
+                <a class="nav-link scrollto" href="/login">Register / Login</a>
+            @endif
+          </li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

@@ -57,7 +57,7 @@
                                 <div class="info-box-content">
                                     <span class="info-box-text">Laporan Pengaduan</span>
                                     <span class="info-box-number">
-                                        1.000
+                                        {{ $pengaduans }}
                                     </span>
                                 </div>
                                 <!-- /.info-box-content -->
@@ -92,9 +92,12 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Tgl Pengaduan</th>
+                                                <th>nama pengadu</th>
                                                 <th>Judul Pengaduan</th>
-                                                <th>Kategori</th>
+                                                <th>Tgl Pengaduan</th>
+                                                <th>isi pengaduan</th>
+                                                <th>foto</th>
+                                                <th>status</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -108,10 +111,10 @@
                                                     <td>{{ $pengaduan->kategori->nama_kategori ?? 'Tidak Ada Data' }}</td>
                                                     <td>{{ $pengaduan->tanggal_pengaduan }}</td>
                                                     <td>{{ $pengaduan->isi_pengaduan }}</td>
-                                                    <td>
+
                                                     <td>
                                                         @if ($pengaduan->foto)
-                                                            <img src="{{ asset('storage/foto_pengaduan/' . $pengaduan->foto) }}" alt="Foto Pengaduan" width="100">
+                                                            <img src="{{ Storage::url($pengaduan->foto) }}" alt="Foto Pengaduan" width="100">
                                                         @else
                                                             Tidak ada foto
                                                         @endif
@@ -132,7 +135,7 @@
                                                         @endif
                                                     @elseif($pengaduan->status == 'diproses' && auth()->user()->role == 'admin')
                                                         <a href="/tambah_tanggapan/{{$pengaduan->id}}">
-                                                            <span class="badge bg-info">
+                                                            <span class="badge bg-warning">
                                                                 {{ ucfirst($pengaduan->status) }}
                                                             </span>
                                                         </a>
@@ -156,7 +159,7 @@
                                                     <td >
 
 
-                                                        <a href="/edit_laporan/{{$pengaduan->id}}"class="btn btn-sm btn-info mt-1">E</a>
+                                                        <a href="/edit_laporan/{{$pengaduan->id}}"class="btn btn-sm btn-warning mt-1">E</a>
                                                         <!-- Link Penghapusan -->
                                                         <form id="delete-form-{{ $pengaduan->id }}" action="{{ route('destroy_pengaduan', $pengaduan->id) }}" method="POST" style="display:inline-block;">
                                                             @csrf
