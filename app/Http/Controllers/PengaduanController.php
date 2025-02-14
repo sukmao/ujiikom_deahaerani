@@ -19,9 +19,10 @@ class PengaduanController extends Controller
      */
     public function index()
 {
+    $kategoris = Kategori::all();
     $petugas = Admin::paginate(3); // Pagination for petugas
     $pengaduans = Pengaduan::with('masyarakat', 'kategori')->latest()->paginate(3); // Pagination for pengaduans
-    return view('pagesadmin.laporan.data_laporan', compact('petugas', 'pengaduans'));
+    return view('pagesadmin.laporan.data_laporan', compact('kategoris','petugas', 'pengaduans'));
 }
 
     /**
@@ -89,7 +90,8 @@ class PengaduanController extends Controller
         $pengaduan->status = '0'; // Status default
         $pengaduan->save();
 
-        return redirect('dashboard_masyarakat')->with('success', 'Data Berhasil Dibuat');
+        return redirect('dashboard_masyarakat#datapengaduan')->with('success', 'Data Berhasil Dibuat');
+
 
     }
 

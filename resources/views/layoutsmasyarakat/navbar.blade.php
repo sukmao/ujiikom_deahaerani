@@ -11,6 +11,7 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#featured-services">information</a></li>
           <li><a class="nav-link scrollto" href="#pengaduan">pengaduan</a></li>
+          <li><a class="nav-link scrollto" href="#datapengaduan">data pengaduan</a></li>
           <li><a class="nav-link scrollto" href="#contact">Kontak Kami</a></li>
           <li>
             @if (auth()->login ?? 'login')
