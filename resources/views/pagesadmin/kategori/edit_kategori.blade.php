@@ -33,17 +33,26 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="col-md-6">
-                                    <div class="form form-group">
-                                        <label for="textNamaKategori">Nama Kategori</label>
-                                        <input type="text" name="textNamaKategori" id="textNamaKategori" class="form form-control">
-                                    </div>
-                                    <div class="form form-group">
-                                        <label for="textDeskripsi">Deskripsi</label>
-                                        <input type="text" name="textDeskripsi" id="textDeskripsi" class="form form-control">
-                                    </div>
-                                    <div class="form form-group">
-                                        <a href="kategori.html" class="btn btn-success btn-md"><li class="fa fa-save"></li> Simpan</a>
-                                    </div>
+                                    <form action="/update_kategori/{{$kategoris->id}}" method="POST">
+                                        @csrf
+                                    
+                                        <div class="form-group">
+                                            <label for="nama_kategori">Nama Kategori</label>
+                                            <input type="text" value="{{ $kategoris->nama_kategori }}" name="nama_kategori" id="nama_kategori" class="form-control" required>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <label for="deskripsi">Deskripsi</label>
+                                            <input type="text" value="{{ $kategoris->deskripsi }}" name="deskripsi" id="deskripsi" class="form-control" required>
+                                        </div>
+                                    
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success btn-md">
+                                                <i class="fa fa-save"></i> Simpan
+                                            </button>
+                                        </div>
+                                    </form>
+                                    
                                 </div>
                             </div>
                             <!-- /.card-body -->

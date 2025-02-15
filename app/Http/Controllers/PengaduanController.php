@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use App\Models\Petugas;
 use App\Models\Kategori;
 use App\Models\Pengaduan;
 use App\Models\Tanggapan;
-use App\Models\Masyarakat;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PengaduanController extends Controller
@@ -123,7 +120,7 @@ class PengaduanController extends Controller
              'kategori_id' => 'required',
              'tanggal_pengaduan' => 'required|date',
              'isi_pengaduan' => 'required',
-             'status' => 'nullable|in:ditolak,0,proses,selesai',
+             'status' => 'nullable|in:ditolak,0,diproses,selesai',
 
          ]);
 
