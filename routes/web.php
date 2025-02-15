@@ -93,6 +93,8 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/destroy_tanggapan/{id}', [PengaduanController::class, 'hapus'])->name('tanggapan.destroy');
 
 
+    Route::get('/generate',[PengaduanController::class,'report'])->name('pengaduan.laporan');
+    Route::get('/formulir_laporan/{id}', [PengaduanController::class, 'formulir']);
 
     Route::get('/indexx',function(){
         return view('index');

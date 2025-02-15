@@ -179,7 +179,7 @@ class PengaduanController extends Controller
 
     $pengaduans = $query->get();
 
-    return view('admin.generate.generate_laporan', compact('pengaduans'));
+    return view('pagesadmin.generate.laporan', compact('pengaduans'));
 }
 
 public function exportLaporan()
@@ -189,10 +189,10 @@ public function exportLaporan()
 
     public function formulir($id)
     {
-        $pengaduans = Pengaduan::where('id', $id)->with(['petugas', 'kategori'])->get();
+        $pengaduans = Pengaduan::where('id', $id)->with(['masyarakat', 'kategori'])->get();
         $petugas = Admin::all();
 
-        return view('admin.generate.formulir_laporan', compact('pengaduans', 'petugas'));
+        return view('pagesadmin.generate.formulir_laporan', compact('pengaduans', 'petugas'));
     }
 
 

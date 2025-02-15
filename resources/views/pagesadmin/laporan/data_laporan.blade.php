@@ -193,8 +193,8 @@
                                             </tbody>
                                         </table>
                                         <div class="d-flex justify-content-center">
-                                    {{ $pengaduans->links() }}
-                                </div>
+                                            {{ $pengaduans->links() }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
