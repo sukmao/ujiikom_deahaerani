@@ -25,6 +25,7 @@ class Admin extends Model
     protected $hidden = [
         'password',
     ];
+
     public function tanggapans()
     {
         return $this->hasMany(Tanggapan::class, );

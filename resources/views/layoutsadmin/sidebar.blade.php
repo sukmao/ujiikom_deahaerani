@@ -64,7 +64,7 @@
                     @unless(auth()->user()->role == 'petugas')
                     <li class="nav-header">Report</li>
                     <li class="nav-item">
-                        <a href="/Generate" class="nav-link {{ request()->is('Generate', 'Generate/*') ? 'active' : '' }}">
+                        <a href="/generate" class="nav-link {{ request()->is('generate', 'generate/*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-print"></i>
                             <p>Generate Report</p>
                         </a>
