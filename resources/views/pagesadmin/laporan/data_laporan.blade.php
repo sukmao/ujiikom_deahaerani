@@ -54,7 +54,7 @@
                             </div>
 
                             <!-- Form agar filter langsung submit -->
-                            <form method="GET" action="{{ route('laporan') }}" id="filterForm">
+                            <form method="GET" action="/laporan" id="filterForm">
                                 @csrf
                                 <button>filter</button>
                             </form>
@@ -137,12 +137,13 @@
 
 
                                                         </td>
-                                                        @unless(auth()->user()->role == 'petugas')
-
+                                                        
                                                         <td >
-
-
-                                                            <a href="/edit_laporan/{{$pengaduan->id}}"class="btn btn-sm btn-info mt-1">E</a>
+                                                            
+                                                            @unless(auth()->user()->role == 'admin')
+                                                            {{-- <a href="/edit_laporan/{{$pengaduan->id}}"class="btn btn-sm btn-info mt-1">E</a> --}}
+                                                            @unless(auth()->user()->role == 'petugas')
+                                                            @endunless
                                                             <!-- Link Penghapusan -->
                                                             <form id="delete-form-{{ $pengaduan->id }}" action="{{ route('destroy_pengaduan', $pengaduan->id) }}" method="POST" style="display:inline-block;">
                                                                 @csrf

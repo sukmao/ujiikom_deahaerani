@@ -79,7 +79,7 @@
                     <select class="form-control" name="status" required>
                         <option value="ditolak" {{ $pengaduan->status == 'ditolak' ? 'selected' : '' }}>ditolak</option>
                         <option value="0" {{ $pengaduan->status == '0' ? 'selected' : '' }}>Pending</option>
-                        <option value="proses" {{ $pengaduan->status == 'proses' ? 'selected' : '' }}>Proses</option>
+                        <option value="diproses" {{ $pengaduan->status == 'diproses' ? 'selected' : '' }}>Proses</option>
                         <option value="selesai" {{ $pengaduan->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
                     </select>
 

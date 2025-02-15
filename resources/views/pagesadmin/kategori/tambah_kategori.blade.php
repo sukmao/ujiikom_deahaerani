@@ -36,11 +36,11 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="nama_kategori" class="form-label">Nama Kategori</label>
-                                    <input type="text" name="nama_kategori" id="nama_kategori" class="form-control" placeholder="Masukkan nama kategori" required>
+                                    <input type="text" value="{{old('nama_kategori')}}" name="nama_kategori" id="nama_kategori" class="form-control" placeholder="Masukkan nama kategori" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="deskripsi" class="form-label">Deskripsi</label>
-                                    <input type="text" name="deskripsi" id="deskripsi" class="form-control" placeholder="Masukkan deskripsi" required>
+                                    <input type="text" value="{{old('deskripsi')}}" name="deskripsi" id="deskripsi" class="form-control" placeholder="Masukkan deskripsi" required>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary btn-lg mt-3 w-100">Simpan</button>

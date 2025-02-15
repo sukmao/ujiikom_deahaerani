@@ -1,6 +1,37 @@
 @extends('layoutsadmin.app')
 @section('contentadmin')
     <!-- Content Header (Page header) -->
+    @if (session('success'))
+    <div class="alert alert-success" id="alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger" id="alert-error">
+        {{ session('error') }}
+    </div>
+@endif
+
+<script>
+    // Hilangkan notifikasi setelah 3 detik (3000 ms)
+    setTimeout(function() {
+        let successAlert = document.getElementById('alert-success');
+        let errorAlert = document.getElementById('alert-error');
+        
+        if (successAlert) {
+            successAlert.style.transition = "opacity 0.5s";
+            successAlert.style.opacity = "0";
+            setTimeout(() => successAlert.remove(), 500);
+        }
+        
+        if (errorAlert) {
+            errorAlert.style.transition = "opacity 0.5s";
+            errorAlert.style.opacity = "0";
+            setTimeout(() => errorAlert.remove(), 500);
+        }
+    }, 3000);
+</script>
     <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -49,7 +80,7 @@
                                         <tr>
                                         @php $no = 1; @endphp
                     @foreach ($petugass as $petugas)
-                        @if ($petugas->role === 'petugas' || 'admin')
+                        @if ($petugas->role === 'petugas' )
                             <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $petugas->nik }}</td>

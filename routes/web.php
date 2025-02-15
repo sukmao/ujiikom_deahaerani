@@ -69,7 +69,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/tambah_kategori',[KategoriController::class,'create']);
     Route::post('/store/kategori',[KategoriController::class,'store']);
     Route::get('/edit_kategori/{id}',[KategoriController::class,'edit']);
-    Route::post('/update/kategori/{id}',[KategoriController::class,'update']);
+    Route::post('/update_kategori/{id}',[KategoriController::class,'update']);
     Route::delete('/destroy_kategori/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
 
     // profile
