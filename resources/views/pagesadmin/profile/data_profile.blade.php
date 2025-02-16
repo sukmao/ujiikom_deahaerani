@@ -19,10 +19,10 @@
 </section>
 
 <!-- Main content -->
-<section class="content">
+<section class="content"  style="background-color: #efc6c6;">
     <div class="row">
-        <div class="col-12">
-            <div class="card bg-light">
+        <div class="col-12" >
+            <div class="card "  style="background-color: #efc6c6;">
                 <div class="card-header text-muted border-bottom-0">
                     NIK: {{ auth()->user()->nik ?? '-' }}
                 </div>
@@ -33,8 +33,8 @@
                             <p class="text-muted text-sm"><b>Jenis Kelamin: </b> {{ auth()->user()->jenis_kelamin ?? '-' }}</p>
                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                 <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Alamat: {{ auth()->user()->alamat ?? '-' }}</li>
-                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone: {{ auth()->user()->phone ?? '-' }}</li>
-                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> Email: {{ auth()->user()->email ?? '-' }}</li>
+                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone: {{ auth()->user()->no_telepon ?? '-' }}</li>
+                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-envelope"></i></span> Email: {{ auth()->user()->username ?? '-' }}</li>
                                 <li class="small"><span class="fa-li"><i class="fas fa-lg fa-briefcase"></i></span> Jabatan: {{ auth()->user()->role ?? '-' }}</li>
                             </ul>
                         </div>

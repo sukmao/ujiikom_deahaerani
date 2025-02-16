@@ -3,10 +3,10 @@
 @section('contentadmin')
 
 <div class="container mt-5" id="print-section">
-    <div class="card">
+    <div class="card"  style="background-color: #efc6c6;">
         <!-- Header Laporan -->
         <div class="card-header text-center d-flex align-items-center justify-content-center">
-            
+
             <h3 class="mb-0">Laporan Pengaduan Masyarakat Madura</h3>
         </div>
 
@@ -27,6 +27,7 @@
 
             <!-- Data Table -->
             <div class="table-responsive mt-3">
+                <div class="card">
                 <table class="table table-bordered">
                     <thead class="table-dark">
                         <tr>
@@ -56,6 +57,7 @@
                     </tbody>
                 </table>
             </div>
+                </div>
 
             <!-- Conclusion -->
             <p class="mt-4">Demikian laporan ini kami sampaikan. Mohon tindak lanjut dan perhatian Bapak/Ibu. Terima kasih atas perhatiannya.</p>

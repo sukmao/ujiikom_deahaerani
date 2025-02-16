@@ -2,11 +2,11 @@
 @section('contentadmin')
 
 <div class="col-md-12">
-    <div class="card">
+    <div class="card" style="background-color: #efc6c6;">
         <div>
             <h3 class="p-2">Generate Laporan Pengaduan Masyarakat</h3>
         </div>
-        <div class="card-body">
+        <div class="card-body" style="background-color: #efc6c6;">
             <!-- Filter Form -->
             <form method="GET" action="{{ route('pengaduan.laporan') }}">
                 <div class="row">
@@ -25,7 +25,8 @@
             </form>
 
             <!-- Laporan Table -->
-            <div class="mt-4">
+            <div class="mt-4" style="background-color: #efc6c6;">
+                <div class="card">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -72,9 +73,7 @@
                         @endforelse
                     </tbody>
                 </table>
-                <!-- <div class="d-flex justify-content-center">
-                    {{ $pengaduan->links() }}
-                </div> -->
+                </div>
             </div>
         </div>
     </div>

@@ -27,13 +27,13 @@
         </div>
         <!-- /.login-logo -->
         <div class="card">
-            <div class="card-body login-card-body">
+            <div class="card-body login-card-body" style="background-color: #efc6c6;">
                 <p class="login-box-msg">Sign in to start your session</p>
 
                 <form action="/store/register" method="post">
                             @csrf
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                 <div class="form-group">
                                     <label><strong>NIK</strong></label>
                                     <input name="nik" value="{{old('nik')}}" type="text"  class="form-control" placeholder="masukan nik">
@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label><strong>No Telepon</strong></label>
                                         <input name="no_telepon" value="{{ old('no_telepon') }}" type="text" class="form-control" placeholder="Masukan No Telepon">
@@ -96,12 +96,11 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label><strong>Role</strong></label>
-                                        <select name="role" class="form-control">
-                                            <option value="">-- Pilih Role --</option>
-                                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
-                                            <option value="petugas" {{ old('role') == 'petugas' ? 'selected' : '' }}>Petugas</option>
-                                            <option value="masyarakat" {{ old('role') == 'masyarakat' ? 'selected' : '' }}>Masyarakat</option>
+
+                                        <select name="role" class="form-control" hidden>
+                                            <option value="masyarakat" {{ old('role') == 'masyarakat' ? 'selected' : '' }} hidden>Masyarakat</option>
+                                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}hidden>Admin</option>
+                                            <option value="petugas" {{ old('role') == 'petugas' ? 'selected' : '' }} hidden>Petugas</option>
                                         </select>
                                         @error('role')
                                             <p class="text-danger">{{ $message }}</p>
