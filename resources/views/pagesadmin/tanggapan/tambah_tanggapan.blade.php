@@ -1,6 +1,6 @@
 @extends('layoutsadmin.app')
 @section('contentadmin')
-<div class="card">
+<div class="card" style="background-color: #efc6c6;">
     <div class="card-header">
         <h4>Buat Tanggapan</h4>
     </div>

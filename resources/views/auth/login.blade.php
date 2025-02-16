@@ -26,8 +26,8 @@
             <a href="../../index2.html"><b>APM</b>Pengaduan</a>
         </div>
         <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
+        <div class="card" >
+            <div class="card-body login-card-body" style="background-color: #efc6c6;">
                 <p class="login-box-msg">Sign in to start your session</p>
 
                 <form action="/store/login" method="post" class="mt-4">
@@ -68,6 +68,7 @@
                     <button type="submit" class="btn btn-primary btn-block mt-2">LOGIN</button>
                 </div>
             </form>
+            <div><p>jika belum punya akun silahkan <a href="/register">Register </a>terlebih dahulu </p></div>
             </div>
             <!-- /.login-card-body -->
         </div>

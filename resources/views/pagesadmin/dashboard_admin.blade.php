@@ -83,11 +83,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header" style="background-color: #efc6c6;">
                                     Data Laporan Masuk
                                 </div>
 
-                                <div class="card-body">
+                                <div class="card-body " style="background-color: #efc6c6;">
+                                    <div class="card">
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
@@ -209,6 +210,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
+                                    </div>
                                 </div>
                                 <div class="d-flex justify-content-center">
                                     {{ $pengaduans->links() }}

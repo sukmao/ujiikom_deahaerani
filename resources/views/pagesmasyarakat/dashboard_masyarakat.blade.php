@@ -82,9 +82,10 @@
 
       </div>
     </section><!-- End Counts Section -->
-    <section id="pengaduan" class="register">
-      <div class="container">
-        <div class="row">
+    <hr>
+    <section id="pengaduan" class="register" style="background-color: #efc6c6;">
+      <div class="container" >
+        <div class="row" >
 
     <div class="col-lg-12 pt-4 pt-lg-0">
     <div class="card">
@@ -174,7 +175,7 @@
     </div>
 @endif
 
-    <section id="datapengaduan" class="create_pengaduan section">
+    <section id="datapengaduan" class="create_pengaduan section" style="background-color: #efc6c6;">
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
         <h2>Daftar Pengaduan</h2>
@@ -251,10 +252,10 @@
             {{ $pengaduans->links() }}
         </div>
     </div>
-</section>
+</section >
 
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact" style="background-color: #efc6c6;">
       <div class="container">
 
         <div class="section-title">

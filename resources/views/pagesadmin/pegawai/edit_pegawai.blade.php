@@ -22,7 +22,7 @@
             <section class="content">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card" style="background-color: #efc6c6;">
                             <div class="card-header">
                                 <h3 class="card-title">Form edit Data Pegawai</h3>
                                 <a href="/pegawai" class="btn float-right btn-outline-warning btn-md">

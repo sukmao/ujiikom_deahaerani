@@ -24,7 +24,7 @@
             <section class="content">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card" style="background-color: #efc6c6;">
                             <div class="card-header">
                                 <h3 class="card-title">Form Add Data Masyarakat</h3>
                                 <a href="/masyarakat" class="btn float-right btn-outline-warning btn-md">
@@ -98,7 +98,7 @@
                                         <input type="hidden" name="role" value="masyarakat">
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary btn-lg mt-3 w-100">Simpan</button>
+                                        <button type="submit" class="btn btn-primary btn-lg mt-3 w-100" style="background-color: #6762FF;">Simpan</button>
                                     </div>
                                 </form>
                             </div>

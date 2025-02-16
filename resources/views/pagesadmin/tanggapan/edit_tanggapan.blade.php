@@ -2,7 +2,7 @@
 
 @section('contentadmin')
 <div class="p-4 mt-4 me-6">
-<div class="card">
+<div class="card" style="background-color: #efc6c6;">
     <div class="card-header">
         <h4>Edit Tanggapan Pengaduan</h4>
     </div>

@@ -17,13 +17,13 @@
     setTimeout(function() {
         let successAlert = document.getElementById('alert-success');
         let errorAlert = document.getElementById('alert-error');
-        
+
         if (successAlert) {
             successAlert.style.transition = "opacity 0.5s";
             successAlert.style.opacity = "0";
             setTimeout(() => successAlert.remove(), 500);
         }
-        
+
         if (errorAlert) {
             errorAlert.style.transition = "opacity 0.5s";
             errorAlert.style.opacity = "0";
@@ -54,15 +54,15 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header" style="background-color: #efc6c6;" >
                                 <h3 class="card-title">Data Masyarakat</h3>
                                 <a href="tambah_masyarakat" class="btn float-right btn-outline-secondary btn-md">
                                     <li class="fa fa-plus"></li> Add Data Masyarakat
                                 </a>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body">
-
+                            <div class="card-body" style="background-color: #efc6c6;">
+                                <div class="card">
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -167,6 +167,8 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                                </div>
+
                             </div>
                             <!-- /.card-body -->
                         </div>

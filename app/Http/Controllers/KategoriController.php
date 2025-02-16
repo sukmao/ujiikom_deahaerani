@@ -40,6 +40,7 @@ class KategoriController extends Controller
 
     public function update(Request $request, $id)
     {
+        dd($request->all());
         $request->validate([
             'nama_kategori'  => 'required',
             'deskripsi'      => 'required',
@@ -54,7 +55,7 @@ class KategoriController extends Controller
             'deskripsi'     => $request->deskripsi,
         ]);
 
-        return redirect('kategori')->with('success', 'Kategori berhasil diperbarui');
+        return redirect('/kategori')->with('success', 'Kategori berhasil diperbarui');
     }
 
     public function destroy($id)

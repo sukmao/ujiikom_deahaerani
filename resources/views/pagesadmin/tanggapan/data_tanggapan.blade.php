@@ -21,12 +21,13 @@
 <section class="content">
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card" style="background-color: #efc6c6;">
                 <div class="card-header">
                     <h3 class="card-title">Data Tanggapan</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
+                <div class="card-body" style="background-color: #efc6c6;">
+                    <div class="card">
                     <table class="table table-bordered table-striped table-hover">
                         <thead class="thead-dark">
                             <tr>
@@ -61,6 +62,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
 
                     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                     <script>

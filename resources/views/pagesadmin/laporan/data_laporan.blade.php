@@ -21,12 +21,12 @@
             <section class="content">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="card" style="background-color: #efc6c6;">
                             <div class="card-header">
                                 <h3 class="card-title">Data Laporan Masuk</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="card-body">
+                            <div class="card-body" style="background-color: #efc6c6;">
                             <div class="row">
     <!-- Filter Berdasarkan Status -->
                                 <div class="col-md-3 float-right">
@@ -72,7 +72,8 @@
 
                                 <hr>
                                 <div class="row">
-                                    <div class="col-md-12 col-xs-12">
+                                    <div class="col-md-12 col-xs-12" style="background-color: #efc6c6;">
+                                        <div class="card">
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
@@ -137,9 +138,9 @@
 
 
                                                         </td>
-                                                        
+
                                                         <td >
-                                                            
+
                                                             @unless(auth()->user()->role == 'admin')
                                                             {{-- <a href="/edit_laporan/{{$pengaduan->id}}"class="btn btn-sm btn-info mt-1">E</a> --}}
                                                             @unless(auth()->user()->role == 'petugas')
@@ -195,6 +196,7 @@
                                         </table>
                                         <div class="d-flex justify-content-center">
                                             {{ $pengaduans->links() }}
+                                        </div>
                                         </div>
                                     </div>
                                 </div>
